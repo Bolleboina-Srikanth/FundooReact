@@ -1,0 +1,59 @@
+.form-container {
+    height: 100vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url("C:\webapp1\fundoo-note-registeration\src\Pages\images\fun.png");
+    background-repeat: no-repeat;
+    background-size: 280px 100px;
+    background-position: top;
+}
+
+.name {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.styles {
+    margin: 10px;
+}
+
+#Email
+ {
+    width: 29vw;
+}
+
+#button {
+    margin-left: 2vw;
+}
+
+
+
+.register {
+
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+/* #Password {
+    width: 5vw;
+} */
+
+.image {
+    position: absolute;
+    margin-left: 13vw;
+    margin-top: 16vh;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+
+}
+#move{
+    margin-right: 12vw;
+}
