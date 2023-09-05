@@ -1,7 +1,129 @@
-.form-container {
+header{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-container1{
+    display: flex;
+    flex-direction: row;
+    border: 0.3px solid black;
+    box-shadow:  0 0 20px rgba(0,0,0,0.5); 
+    height: 90vh;
+    width:50vw;
+    border-radius: 1em;
+    align-items: center;
+      padding: 1%;  
+}
+ .form-container2{
+    height: 100%;
+    width:90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+.name,.password{
+    display: flex;
+    width: 33vw;
+    justify-content: space-between;
+}
+.email1{
+     margin: 10px; 
+     /* width: 34.5vw;  */
+     /* width: 100%;  */
+}
+#email-box{
+     width: 95%; 
+}
+.text-box{
+    width: 95%;
+}
+.register{
+    display: flex;
+    flex-direction: row;
+     justify-content: space-around; 
+     justify-content: space-between;
+    width: 35vw;
+}
+#signin{
+    margin: 13px;
+}
+
+/* -------------------------------------------------------------------------- */
+@media (min-width:400px) and (max-width:600px)
+{
+    .googleimg{
+        display: none;
+    }
+    .name,.password,.register{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between;
+        justify-content: space-around; */
+    }
+    .form-container2{
+        height: 100%;
+        width:100%;
+    }
+    #signin{
+        justify-content: space-around;
+        padding: 3px;
+    }
+}
+@media (min-width:600px) and (max-width:800px)
+{
+    .googleimg{
+        display: none;
+    }
+    .name,.password,.register{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        justify-content: space-around;
+    }
+    .form-container2{
+        height: 100%;
+        width:100%;
+    }
+    #signin{
+        justify-content: space-around;
+        padding: 3px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------- */
+/*  .form-container {
     height: 100vh;
     width: 80vw;
     display: flex;
+      box-shadow:  0 0 20px rgba(0,0,0,0.5); 
+    border-radius: 15px; 
     flex-direction: column;
     justify-content: center;
     background-image: url("C:\webapp1\fundoo-note-registeration\src\Pages\images\fun.png");
@@ -39,9 +161,9 @@
     margin: 30px;
 }
 
-/* #Password {
+ #Password {
     width: 5vw;
-} */
+} 
 
 .image {
     position: absolute;
@@ -57,3 +179,53 @@
 #move{
     margin-right: 12vw;
 }
+
+.checkbox{
+    color:blue;
+    margin-right: 22vw;
+}
+@media (min-width:400px) and (max-width:600px)
+{
+    #Email
+    {
+       width: 67vw;
+   }
+   .image {
+    position: absolute;
+    margin-left: 23vw;
+    margin-top: 33vh;
+}
+#id{
+    margin-left: 20px;
+}
+.checkbox{
+    margin-right: 50vw;
+}
+#move{
+    margin-right: 25vw;
+}
+
+}
+
+@media(min-width:600px) and (max-width:800px)
+{
+    #Email
+    {
+       width: 55vw;
+   }
+    .image {
+        position: absolute;
+        margin-left: 20vw;
+        margin-top: 30vh;
+    }
+    .checkbox{
+        color:blue;
+        margin-right: 43vw;
+    }
+    #button {
+        margin-left: 16vw;
+    }
+    #move{
+        margin-right: 25vw;
+    }
+}  */
