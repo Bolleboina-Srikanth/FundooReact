@@ -6,6 +6,8 @@ import images from '../..//Pages/images/fun.png';
 
 
 const SignIn = () => {
+  
+       
     const [userlogin,setUserlogin] = useState(
         {
             email:"",
@@ -20,12 +22,14 @@ const SignIn = () => {
             value=e.target.value;
             setUserlogin({...userlogin, [name]:value})
         }
-        const handleClick =()=>
-        {
-            console.log(userlogin);
-        }
-         
-    
+         const handleClick =()=>
+         {
+             console.log(userlogin);
+         }
+        //-------------------------------------------------------------------------------
+        
+       
+        //------------------------------------------------------------------------------
     return (
         <header>
             <div className="form-container">
@@ -36,12 +40,12 @@ const SignIn = () => {
                 </div>
                 
                 <div class="email">
-                    <TextField id="email-box" label="Email" name="email" variant="outlined" required value={userlogin.email} onChange={handleInput}  />
+                    <TextField id="email-box" label="Email" name="email" variant="outlined" required value={userlogin.email} onChange={handleInput}   />
                 </div>
 
                 <div>
                 <div class="password">
-                    <TextField id="password-box" label="Password" name="password" variant="outlined" required  value={userlogin.password} onChange={handleInput}/>
+                    <TextField id="password-box" label="Password" name="password" variant="outlined" required  value={userlogin.password} onChange={handleInput}  />
                 </div>
                 <p id="fpassword">forgot password</p>
                 </div>
