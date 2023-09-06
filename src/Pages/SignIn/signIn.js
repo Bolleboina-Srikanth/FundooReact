@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import './signIn.css';
 import { Button } from '@mui/material';
 import images from '../..//Pages/images/fun.png';
+import { signIn } from "../../Services/UserServices";
 
 
 const SignIn = () => {
@@ -33,9 +34,9 @@ const SignIn = () => {
                 emailError: false,
                 emailHelper: "",
                 passwordError: false,
-                passwordHelper: ""            
+                passwordHelper: ""
             })
-            const handleClick = () => {
+            const  handleClick = async () => {
              let emailTest = emailRegex.test(userlogin.email);
              let passwordTest = passwordRegex.test(userlogin.password);
              if (emailTest === false)
@@ -67,9 +68,19 @@ const SignIn = () => {
                 }
                 else
                 {
-                    setErrorObj((prevState) => ({ ...prevState,passwordError: false,passwordHelper: "",}));
+                    setErrorObj((prevState) => ({
+                         ...prevState,
+                         passwordError: false,
+                         passwordHelper: "",
+                        }));
                 }
                    console.log(userlogin);
+                   if(emailTest == passwordTest == true)
+                   {
+                    let response = await signIn(userlogin);
+                    console.log(response);
+                    localStorage.setItem("token", response.data.date);
+                   }
                 }
        
         //------------------------------------------------------------------------------

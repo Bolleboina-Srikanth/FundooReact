@@ -7,7 +7,7 @@ import SignIn from './Pages/SignIn/signIn';
 function App() {
   return (
     <div className="App">
-             {/* <RegisterationForm/>      */}
+              <RegisterationForm/>      
                 <SignIn/>         
     </div>
   );

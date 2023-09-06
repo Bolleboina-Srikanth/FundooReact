@@ -5,6 +5,7 @@ import './RegisterationStyles.css'
 import { Button, Checkbox } from '@mui/material';
 import images from '../..//Pages/images/fun.png';
 import image2 from '../..//Pages/images/image2.png';
+import { SignUp } from '../../Services/UserServices';
 
 
 
@@ -13,7 +14,7 @@ const RegisterationForm = () => {
 
 
 
-    const firstnameRegex = /^[a-zA-Z ]{2,30}$/;   
+    const firstnameRegex = /^[a-zA-Z ]{2,30}$/;
     const lastNameRegex = /^[a-zA-Z ]{2,30}$/;
     const emailRegex = /^[a-z]{3,}(.[0-9a-z]*)?@([a-z]){2,}.[a-z]+(.in)*$/;
     const passwordRegex = /^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$/;
@@ -48,7 +49,7 @@ const RegisterationForm = () => {
             })
       
         
-        const handleClick = () => {
+        const handleClick = async () => {
             let firstNameTest = firstnameRegex.test(userInput.firstName);
             let lastNameTest = lastNameRegex.test(userInput.lastName);
             let emailTest = emailRegex.test(userInput.email);
@@ -132,6 +133,13 @@ const RegisterationForm = () => {
                      }));
             }
             console.log(userInput);
+
+            if(firstNameTest === lastNameTest === emailTest === passwordTest === true)
+            {
+                let response = await SignUp(userInput);
+                console.log(response);
+                localStorage.setItem("token", response.userInput.data.data);
+            }
         }
     // ------------------------------------------------------------------------------------
     return (
@@ -153,8 +161,8 @@ const RegisterationForm = () => {
                     </div>
 
                     <div className='password'>
-                        <div><TextField className='text-box' id="Password" label="Password" name="password" variant="outlined" required onChange={handleInput} value={userInput.password} error={errorObj.passwordError} helperText={errorObj.passwordHelper} /></div>
-                        <div><TextField className='text-box' id="Confirm password" name="confirmPassword" label="Confirm password" variant="outlined" required onChange={handleInput} value={userInput.confirmPassword} /></div>
+                        <div><TextField className='text-box' type="password" id="Password" label="Password" name="password" variant="outlined" required onChange={handleInput} value={userInput.password} error={errorObj.passwordError} helperText={errorObj.passwordHelper} /></div>
+                        <div><TextField className='text-box' type="password" id="Confirm password" name="confirmPassword" label="Confirm password" variant="outlined" required onChange={handleInput} value={userInput.confirmPassword} /></div>
                     </div>
 
                     
