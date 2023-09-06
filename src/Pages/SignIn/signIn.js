@@ -6,7 +6,8 @@ import images from '../..//Pages/images/fun.png';
 
 
 const SignIn = () => {
-  
+    const emailRegex = /^[a-z]{3,}(.[0-9a-z]*)?@([a-z]){2,}.[a-z]+(.in)*$/;
+    const passwordRegex = /^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$/;
        
     const [userlogin,setUserlogin] = useState(
         {
@@ -22,12 +23,54 @@ const SignIn = () => {
             value=e.target.value;
             setUserlogin({...userlogin, [name]:value})
         }
-         const handleClick =()=>
-         {
-             console.log(userlogin);
-         }
+        //  const handleClick =()=>
+        //  {
+        //      console.log(userlogin);
+        //  }
         //-------------------------------------------------------------------------------
-        
+        const [errorObj, setErrorObj] = useState(
+            {
+                emailError: false,
+                emailHelper: "",
+                passwordError: false,
+                passwordHelper: ""            
+            })
+            const handleClick = () => {
+             let emailTest = emailRegex.test(userlogin.email);
+             let passwordTest = passwordRegex.test(userlogin.password);
+             if (emailTest === false)
+             {
+                setErrorObj((prevState) => (
+                    {
+                     ...prevState,//Spread operator-->it is used to copy values
+                     emailError: true,
+                     emailHelper: "enter correct email",
+                    }
+                    ));
+                }
+                else
+                {
+                    setErrorObj((prevState) => (
+                        { ...prevState,
+                         emailError: false,
+                         emailHelper: "",
+                        }));
+                }
+                if (passwordTest === false)
+                {
+                    setErrorObj((prevState) => (
+                     {
+                      ...prevState,
+                      passwordError: true,
+                       passwordHelper: "enter correct password",
+                    }));
+                }
+                else
+                {
+                    setErrorObj((prevState) => ({ ...prevState,passwordError: false,passwordHelper: "",}));
+                }
+                   console.log(userlogin);
+                }
        
         //------------------------------------------------------------------------------
     return (
@@ -40,12 +83,12 @@ const SignIn = () => {
                 </div>
                 
                 <div class="email">
-                    <TextField id="email-box" label="Email" name="email" variant="outlined" required value={userlogin.email} onChange={handleInput}   />
+                    <TextField id="email-box" label="Email" name="email" variant="outlined" required value={userlogin.email} onChange={handleInput}   error={errorObj.emailError} helperText={errorObj.emailHelper} />
                 </div>
 
                 <div>
                 <div class="password">
-                    <TextField id="password-box" label="Password" name="password" variant="outlined" required  value={userlogin.password} onChange={handleInput}  />
+                    <TextField type="password" id="password-box" label="Password" name="password" variant="outlined" required  value={userlogin.password} onChange={handleInput} error={errorObj.passwordError} helperText={errorObj.passwordHelper} />
                 </div>
                 <p id="fpassword">forgot password</p>
                 </div>
@@ -54,7 +97,7 @@ const SignIn = () => {
                     <a id="createaccount" href="RegisterationForm.js">Create account</a>
                     </div>
                     <div>
-                    <Button id="button" variant="contained" onClick={handleClick} >Signin</Button>
+                    <Button id="button" variant="contained" onClick={handleClick} type="Submit" >Signin</Button>
                     </div>
                 </div>
             </div>
