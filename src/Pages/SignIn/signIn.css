@@ -1,7 +1,73 @@
-header{
-    width: 100vw;
-    height: 100vh;
-    /* background-color: blue; */
+ /* .main{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+    margin-top: 3px;
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    border: 0.5px solid rgba(0, 0, 0, 0.378);
+    box-shadow:  0 0 20px rgba(0,0,0,0.5); 
+    width: 90vh;
+    height: 90vh;
+    border-radius: 1em;
+    justify-content: center;
+    
+      justify-content: space-around;  
+     align-items: center; 
+
+}
+ .image{
+margin-left: 15vw;
+} 
+#email-box,#password-box{
+    width: 30vw;
+}
+.signin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 32vw;
+}
+#createaccount{
+    text-decoration: none;
+}
+ #fpassword{
+    width: 13vw;
+    color: blue;
+} 
+
+@media (min-width:400px) and (max-width:600px)
+{
+    .signin{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-container{
+   justify-content: none;
+    }
+}
+@media (min-width:600px) and (max-width:800px)
+{
+    .signin{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    
+}  */
+
+
+
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+    margin-top: 3px;
 }
 .form-container{
     display: flex;
@@ -34,6 +100,15 @@ header{
     width: 13vw;
     color: blue;
 } 
+#email-box,#password-box{
+    width: 30vw;
+
+}
+.image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 @media (min-width:400px) and (max-width:600px)
 {
@@ -73,72 +148,3 @@ header{
 
 
 
-/* .container{
-    height: 600px;
-    width: 600px;
-    display:flex;
-    border: 0.5px solid rgba(0, 0, 0, 0.378);
-    padding: 5px;
-      box-shadow:  5px;  
-    
-    flex-direction: column;
-    justify-content: center;
-     align-items: center; 
-    background-image: url("C:\webapp1\fundoo-note-registeration\src\Pages\images\fun.png");
-    background-repeat: no-repeat;
-    background-size: 280px 100px;
-    background-position: top; 
-    margin-left: 470px;
-    border-radius: 25px;
-    margin-top: 40px;
-}
-.signin{
-    
-   margin: 10px;
-   
-}
-#email,#password{
-    width: 35vw; 
-
-}
-#fpassword{
-    color: blue;
-    margin-left: 28vw;
-}
-.box{
-    display: flex;
-    justify-content: center;
-    margin: 30px;
-}
-#signin{
-    margin-right: 15vw;
-    text-decoration: none;
-}
-@media (min-width:400px) and (max-width:600px)
-
-{
-    .box{
-        display: flex;
-        justify-content: center;
-        margin: 30px;
-    }
-    .container{
-        /* height: 600vh;
-    width: 600px; 
-    border: none;
-    }
-}
-@media (min-width:600px) and (max-width:800px)
-{
-    .box{
-        display: flex;
-        justify-content: center;
-        margin: 30px;
-    }
-    .container{
-        /* height: 600vh;
-    width: 600px; 
-    border: none;
-    }
-}
-   */

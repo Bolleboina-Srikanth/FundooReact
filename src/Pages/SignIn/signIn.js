@@ -81,14 +81,20 @@ const SignIn = () => {
                     console.log(response);
                     localStorage.setItem("token", response.data.date);
                    }
+                   setTimeout(() => {
+                    if(localStorage.key){
+                        window.location.reload()
+                    }
+                    
+                   }, 2000);
                 }
        
         //------------------------------------------------------------------------------
     return (
-        <header>
+        <div className="main">
             <div className="form-container">
-                <div>
-                    <img src={images} width='20%' alt="fundoo" />
+                <div className="image">
+                    <img  src={images} width='20%' alt="fundoo" />
                     <h2>Sign in</h2>
                     <p>with your fundoo account</p>
                 </div>
@@ -105,14 +111,14 @@ const SignIn = () => {
                 </div>
                 <div class="signin">
                     <div>
-                    <a id="createaccount" href="RegisterationForm.js">Create account</a>
+                    <a id="createaccount" href="/Registeration">Create account</a>
                     </div>
                     <div>
                     <Button id="button" variant="contained" onClick={handleClick} type="Submit" >Signin</Button>
                     </div>
                 </div>
             </div>
-        </header>
+            </div>
     )
 };
 export default SignIn;

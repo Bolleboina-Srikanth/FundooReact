@@ -138,12 +138,12 @@ const RegisterationForm = () => {
             {
                 let response = await SignUp(userInput);
                 console.log(response);
-                localStorage.setItem("token", response.userInput.data.data);
+                localStorage.setItem("token", response.userInput.data);
             }
         }
     // ------------------------------------------------------------------------------------
-    return (
-        <header>
+    return ( 
+        <div className='main'>
             <div className='form-container1'>
                 <div className='form-container2'>
                     <div className='fundooimg'>
@@ -173,7 +173,7 @@ const RegisterationForm = () => {
                     </div>
 
                     <div className='register'>
-                        <div><a id="signin" href="signIn.js">Sign in instead</a></div>
+                        <div><a id="signin" href="/">Sign in instead</a></div>
                         <div><Button id="button" variant="contained" onClick={handleClick} type="Submit">Register</Button></div>
                     </div>
                     
@@ -181,11 +181,11 @@ const RegisterationForm = () => {
 
 
                 <div className='googleimg'>
-                    <img className="image" src={image2} width='50%' alt="fundoo" />
+                    <img  className="image" src={image2} width='50%' alt="fundoo" />
                 </div>
 
             </div>
-        </header>
+        </div>
     );
 }
 export default RegisterationForm;
