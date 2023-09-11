@@ -48,7 +48,10 @@ import {  alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { Container} from '@mui/material'; 
 import {TextField} from '@mui/material';
-import Funkeep from '../Components/Images/Keep.png'
+import Funkeep from '../Components/Images/Keep.png';
+import { useNavigate } from 'react-router-dom';
+import ViewStreamOutlinedIcon from '@mui/icons-material/ViewStreamOutlined';
+import AppsIcon from '@mui/icons-material/Apps';
 
 
 
@@ -170,7 +173,7 @@ export default function Navbar() {
   const handleDrawer = () => {
     setOpen(!open);
   };
-  //-------------------------------------------
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -179,7 +182,15 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const navigate = useNavigate();
+  const handleLogout = () =>
+  {
+    if(localStorage.key)
+    {
+      localStorage.removeItem("token")
+    }
+    navigate("/")
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -216,7 +227,7 @@ export default function Navbar() {
                  anchorEl={anchorEl}
                  anchorOrigin={{
                    vertical: 'top',
-                   horizontal: 'right',
+                   horizontal: 'left',
                }}
                  keepMounted
                  transformOrigin={{
@@ -227,12 +238,14 @@ export default function Navbar() {
                  onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Add account </MenuItem>
-                <MenuItem onClick={handleClose}>Log out</MenuItem>
+                <MenuItem onClick={handleLogout}>Log out</MenuItem>
               </Menu>
               <RefreshIcon 
-              sx={{marginLeft:30,color:"gray"}}/> 
+              sx={{marginLeft:38,color:"gray"}}/> 
+              <ViewStreamOutlinedIcon sx={{marginLeft:0,color:"gray"}}/>
+              
              <SettingsIcon sx={{marginLeft:3,color:"gray"}}/>   
-
+             <AppsIcon sx={{marginLeft:30,color:"gray"}}/>
 
              <IconButton
                 size="large"
@@ -268,7 +281,7 @@ export default function Navbar() {
               <ListItemButton
                 sx={{
                   minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
+                  justifyContent:  'center',
                   px: 2.5,
                 }}
               >
@@ -298,8 +311,9 @@ export default function Navbar() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
       </Box>
-      //-----------------------------------------
+      
     </Box>
         
   );
 }
+//

@@ -81,12 +81,13 @@ const SignIn = () => {
                     console.log(response);
                     localStorage.setItem("token", response.data.date);
                    }
-                   setTimeout(() => {
-                    if(localStorage.key){
-                        window.location.reload()
-                    }
+                //    setTimeout(() => {
+                //     if(localStorage.key){
+                //         window.location.reload()
+                //     }
                     
-                   }, 2000);
+                //    }, 2000);
+                
                 }
        
         //------------------------------------------------------------------------------
