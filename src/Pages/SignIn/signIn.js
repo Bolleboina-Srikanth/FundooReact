@@ -4,12 +4,14 @@ import './signIn.css';
 import { Button } from '@mui/material';
 import images from '../..//Pages/images/fun.png';
 import { signIn } from "../../Services/UserServices";
+import { useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 
 const SignIn = () => {
     const emailRegex = /^[a-z]{3,}(.[0-9a-z]*)?@([a-z]){2,}.[a-z]+(.in)*$/;
     const passwordRegex = /^.*(?=.{8,})(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$/;
-       
+    const navigate =useNavigate();
     const [userlogin,setUserlogin] = useState(
         {
             email:"",
@@ -74,19 +76,28 @@ const SignIn = () => {
                          passwordHelper: "",
                         }));
                 }
-                   console.log(userlogin);
-                   if(emailTest == passwordTest == true)
-                   {
-                    let response = await signIn(userlogin);
-                    console.log(response);
-                    localStorage.setItem("token", response.data.date);
-                   }
+                //    console.log(userlogin);
+                //    if(emailTest == passwordTest == true)
+                //    {
+                //     let response = await signIn(userlogin);
+                //     console.log(response);
+                //     localStorage.setItem("token", response.data.date);
+                //    }
                 //    setTimeout(() => {
                 //     if(localStorage.key){
                 //         window.location.reload()
                 //     }
                     
                 //    }, 2000);
+                console.log(userlogin)
+
+                
+                if( emailTest === true && passwordTest === true){
+                    let response = await signIn(userlogin);
+                    console.log(response);
+                    localStorage.setItem("token",response.data.date);
+                    navigate("/dashboard");
+                }
                 
                 }
        
@@ -112,7 +123,7 @@ const SignIn = () => {
                 </div>
                 <div class="signin">
                     <div>
-                    <a id="createaccount" href="/Registeration">Create account</a>
+                    <Link id="createaccount" to="/Registeration">Create account</Link>
                     </div>
                     <div>
                     <Button id="button" variant="contained" onClick={handleClick} type="Submit" >Signin</Button>

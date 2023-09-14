@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-// import './Takenote3.css';
 import './GetAllNotes.css';
 
 import { IconButton, Typography } from '@mui/material';
@@ -12,14 +12,51 @@ import ColorChangeIcon from '@mui/icons-material/PaletteOutlined';
 import ImageIcon from '@mui/icons-material/InsertPhotoOutlined';
 import ArchiveIcon from '@mui/icons-material/ArchiveOutlined';
 import MoreIcon from '@mui/icons-material/MoreVertOutlined';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { PinNotes, TrashNotes,ArchiveNotes } from '../../Services/NotesService';
 
-export default function DisplayNotes({ userNotes }) {
+export default function DisplayNotes({ userNotes, getAllnotes }) {
+
+
+    const [archiveing, setArchiveing] = useState(false);
+    const [trashing,setTrashing] = useState(false);
+
+    
+    //--------------------------------------------------
+    
+    const handleDelete= async()=>{
+        let Id = userNotes.noteId;
+   let response = await TrashNotes(Id);
+   console.log(response);
+   setTrashing(response);
+   getAllnotes();
+    }
+ //----------------------------------------------------------------
+ const handleArchive = async () => {
+    let Id = userNotes.noteId;
+    let response = await ArchiveNotes(Id);
+    console.log(response);
+    setArchiveing(response);
+    getAllnotes();
+ }
+
+    //-------------------------------------------------------
+    const handlePin = async () =>{
+        let Id = userNotes.noteId;
+        // let Id = userNotes.noteId;
+        let response = await PinNotes(Id);
+        console.log(response);
+        getAllnotes();
+    }
+
+
     return (
         <Box
             sx={{
                 display: 'flex',
                 justifyContent: 'center',
                 flexWrap: 'wrap',
+                
                 '& > :not(style)': {
                     m: 4,
                     width: 'auto',
@@ -32,7 +69,7 @@ export default function DisplayNotes({ userNotes }) {
                     <div style={{display:'flex'}}>
                         {userNotes.title}
 
-                        <IconButton><PinIcon  sx={{marginLeft:20}}/></IconButton>
+                        <IconButton><PinIcon onClick={handlePin} sx={{marginLeft:20}}/></IconButton>
                     </div>
                 </div>
                 <div>
@@ -59,13 +96,13 @@ export default function DisplayNotes({ userNotes }) {
 
                     <div>
                         <IconButton>
-                            <ImageIcon />
+                            <ArchiveIcon onClick={handleArchive} />
                         </IconButton>
                     </div>
 
                     <div>
                         <IconButton>
-                            <ArchiveIcon />
+                            <DeleteIcon onClick={handleDelete}/>
                         </IconButton>
                     </div>
 

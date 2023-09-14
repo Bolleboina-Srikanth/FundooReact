@@ -13,7 +13,7 @@
 
  
 
- const NoteTaking = () => {
+ const NoteTaking = ({ getAllnotes}) => {
     
 
 
@@ -21,7 +21,7 @@
      <Box sx={{ display : 'flex', width: '100%'}}>
        <Box sx={{ p: 3,width : '100%;'}}>
      <DrawerHeader/>
-     <Form/>
+     <Form  getAllnotes={getAllnotes}/>
      </Box>
      </Box>
     

@@ -17,6 +17,9 @@ import UndoIcon from '@mui/icons-material/UTurnLeftOutlined';
 import RedoIcon from '@mui/icons-material/UTurnRightOutlined';
 import Button from '@mui/material/Button';
 import { CreateNotes } from '../../Services/NotesService';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import BrushOutlinedIcon from '@mui/icons-material/BrushOutlined';
+import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 
 const Container = styled(Box)`
  display: flex;
@@ -34,8 +37,10 @@ const Container = styled(Box)`
 `
 
 
-const Form = () => {
+const Form = ({getAllnotes}) => {
     const [showTextField, setShowTextfield] = useState(false);
+
+     
 
 
     const onTextAreaField = () => {
@@ -43,8 +48,12 @@ const Form = () => {
     }
     const handleClickAway = () => {
         setShowTextfield(false);
+        
     }
-    const [notesInput, setNotesInput] = useState(true);
+
+
+
+    // const [notesInput, setNotesInput] = useState(true);
     
 
     const [takenotes, setTakenotes] = useState(
@@ -65,11 +74,14 @@ const Form = () => {
 
         const handleClick = async ()=>
           {
-        
+        //  setNotesInput((prev) => !prev)
               console.log(takenotes);
+              if(takenotes!= null && takenotes.Title!="")
+              {
               let response = await CreateNotes(takenotes);
               console.log(response);
-
+              getAllnotes();
+              }
           }
 
     return (
@@ -79,18 +91,22 @@ const Form = () => {
                     <TextField
                         placeholder='Title'
                         variant='standard'
-                        InputProps={{ disableUnderline: true }}
+                        InputProps={{ disableUnderline: true,
+                            endAdornment: ( <IconButton><PinIcon/></IconButton>)
+                         }}
                         name="Title"
                         value={takenotes.Title}
                         onChange={handleInput}
                     />
+                    
                 }
                 <div>
                     <TextField
                         placeholder='Take a note...'
                         variant='standard'
                         InputProps={{
-                            disableUnderline: true,
+                            disableUnderline: true
+                           
                         }}
                         multiline
                         maxRows={Infinity}
@@ -101,10 +117,10 @@ const Form = () => {
                     
                     />
                     
-                    
                     {showTextField ? (
 
                         <IconButton onClick={onTextAreaField}>
+                            
                             <RemindMeIcon style={{ width: 17, marginLeft: '1ch',marginRight: '1ch', marginTop: '2ch' }} />
 
                             <CollaboratorIcon style={{ width: 17, marginLeft: '1ch', marginTop: '2ch' }} />
@@ -120,10 +136,25 @@ const Form = () => {
 
                             <RedoIcon style={{ width: 17, marginRight: '14ch', marginTop: '2ch', rotate: '-90deg' }} />
                             <Button variant="text" onClick={handleClick} style={{ color: 'black',marginLeft:'0ch', marginRight: '40ch', marginBottom: '0ch',marginTop:'2.5ch' }}>Close</Button>
+                            
                         </IconButton>
 
                     ) : (
-                        ""
+                        <span  style={{marginLeft:'35ch'}}>
+                        
+                        <IconButton  >
+                        
+                            <CheckBoxOutlinedIcon />
+                            
+                            </IconButton>
+                            <IconButton>
+                            <BrushOutlinedIcon  sx={{marginLeft:'0'}}/>
+                            </IconButton>
+                            <IconButton>
+                            <InsertPhotoOutlinedIcon sx={{marginLeft:'0ch'}}/>
+                            
+                        </IconButton>
+                    </span>
                     )}
                 </div>
             </Container>

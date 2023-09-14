@@ -26,7 +26,9 @@ import EditIcon from '@mui/icons-material/Edit';
 
 
 
-const NavList = (open) => {
+
+const NavList = ({open,setNotesType}) => {
+  
     return(
         <List>
           {['Notes', 'Remainders', 'Edit', 'Archive', 'Delete'].map((text, index) => (
@@ -47,11 +49,11 @@ const NavList = (open) => {
                 >
 
                   {
-                    index % 5 === 0 ? <LightbulbIcon /> :
+                    index % 5 === 0 ? <LightbulbIcon onClick={()=> setNotesType("Notes")}/> :
                       index % 4 === 1 ? <NotificationsIcon /> :
                         index % 4 === 2 ? <EditIcon /> :
-                          index % 3 === 0 ? <ArchiveIcon /> :
-                            index % 4 === 0 ? <DeleteIcon /> : ""}
+                          index % 3 === 0 ? <ArchiveIcon onClick={()=> setNotesType("Archive")}/> :
+                            index % 4 === 0 ? <DeleteIcon onClick={()=> setNotesType("Trash")}/> : ""}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>

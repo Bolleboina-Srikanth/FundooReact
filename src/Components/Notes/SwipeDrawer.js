@@ -52,7 +52,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const SwipeDrawer = () => {
+const SwipeDrawer = ({setNotesType}) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -69,7 +69,7 @@ const SwipeDrawer = () => {
       />
       <Drawer variant="permanent" open={open}>
         <DrawerHeader></DrawerHeader>
-        <NavList open={open} />
+        <NavList open={open}  setNotesType={setNotesType} />
         
       </Drawer>
     </Box>

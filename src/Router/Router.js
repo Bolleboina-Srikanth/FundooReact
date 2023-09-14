@@ -6,6 +6,7 @@ import Dashboard from "../Components/Dashboard/Dashboard";
 import AuthRoute from  "./AuthRoute";
 import ProtectedRoute from "./ProtectedRoute";
 
+
 function Router()
 {
     return(
